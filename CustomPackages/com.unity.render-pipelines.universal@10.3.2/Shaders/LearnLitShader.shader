@@ -24,29 +24,29 @@
 		_MicroThickness("MicroThickness", Float) = 2
 		_Thickness("Thickness", Float) = 2
 
-        // Blending state
-        [HideInInspector] _Surface("__surface", Float) = 0.0
-        [HideInInspector] _Blend("__blend", Float) = 0.0
-        [HideInInspector] _AlphaClip("__clip", Float) = 0.0
-        [HideInInspector] _SrcBlend("__src", Float) = 1.0
-        [HideInInspector] _DstBlend("__dst", Float) = 0.0
-        [HideInInspector] _ZWrite("__zw", Float) = 1.0
-        [HideInInspector] _Cull("__cull", Float) = 2.0
+		// Blending state
+		[HideInInspector] _Surface("__surface", Float) = 0.0
+		[HideInInspector] _Blend("__blend", Float) = 0.0
+		[HideInInspector] _AlphaClip("__clip", Float) = 0.0
+		[HideInInspector] _SrcBlend("__src", Float) = 1.0
+		[HideInInspector] _DstBlend("__dst", Float) = 0.0
+		[HideInInspector] _ZWrite("__zw", Float) = 1.0
+		[HideInInspector] _Cull("__cull", Float) = 2.0
 	}
-	
+
     SubShader
-	{
-		Tags{"RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "True" "ShaderModel" = "4.5"}
-		LOD 300
+    {
+        Tags{"RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "Lit" "IgnoreProjector" = "True" "ShaderModel" = "4.5"}
+        LOD 300
 
-		Pass
-		{
-			Name "CustomForwardLit"
-			Tags{"LightMode" = "UniversalForward"}
+        Pass
+        {
+            Name "CustomForwardLit"
+            Tags{"LightMode" = "UniversalForward"}
 
-			Blend[_SrcBlend][_DstBlend]
-			ZWrite[_ZWrite]
-			Cull[_Cull]
+            Blend[_SrcBlend][_DstBlend]
+            ZWrite[_ZWrite]
+            Cull[_Cull]
 
             HLSLPROGRAM
             #pragma exclude_renderers gles gles3 glcore
@@ -93,10 +93,10 @@
             #pragma vertex LitPassVertex
             #pragma fragment LitPassFragment
 
-			#include "Packages/com.unity.render-pipelines.universal/LearnShaders/Shaders/LearnLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/LearnShaders/Shaders/LearnLitForwardPass.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/LearnLitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/LearnLitForwardPass.hlsl"
             ENDHLSL
-		}
+        }
 
         Pass
         {
